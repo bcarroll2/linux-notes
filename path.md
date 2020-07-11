@@ -6,6 +6,18 @@ Path is an environment variable that outputs a string of colon separated absolut
 /usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
 ```
 
+You can see your current $PATH variable by typing:
+
+```
+echo $PATH
+```
+
+or you can use the `env` or `printenv` commands to see all environment variables, and specifically return PATH:
+
+```
+env | grep PATH
+```
+
 When a user types a command into their shell, if that command is not built into the shell or the user does not provide an absolute path, the shell will use the PATH variable to search for executable programs. The shell will split the PATH variable by the colon delimiter, and attempt to use each path to resolve the location of the program.
 
 You can add directories or absolute paths to the PATH variable for either the current session:
