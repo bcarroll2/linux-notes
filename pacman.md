@@ -11,3 +11,5 @@ This will remove the package, its dependencies, and all config files.
 ### Upgrade your system
 1. `sudo pacman -Syy` - this will first update the repositories
 2. `sudo pacman -Syu` - actually upgrade all installed packages.
+
+Guide: https://kaosx.us/docs/pacman/
