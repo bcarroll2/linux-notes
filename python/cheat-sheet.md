@@ -15,3 +15,8 @@ def someFunction(param):
 	print(param)
 	return True
 ```
+
+### Helpful built in functions
+* `len('hey')` or `len(['h','e','y']) # => 3`
+* `''.join(['h','e','y']) # => 'hey'`
+* `for index, value in enumerate(list): # to get index`
