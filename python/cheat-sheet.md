@@ -69,3 +69,70 @@ seq4 = [round(pi, x) for x in seq]
 seq5 = { x: x**2 for x in seq}
 seq6 = { x for x in 'superduper' if x not in 'pd'}
 ```
+
+### Classes
+like so:
+```python
+class Duck:
+	# Class Variables - these are public (like donald.sound is valid)
+	# and apply to all instances of the class
+	sound = 'Quack'
+	
+	def __init__(self, **kwargs):
+		# underscore to denote "private" (but not really)
+		self._type = kwargs['type'] if 'type' in kwargs else 'Mallard'
+		self._name = kwargs['name']
+		self._sound = kwargs['sound']
+
+	# method
+	def quack(self):
+		# instance is always first arg, traditionally
+		# referenced by `self`
+		print(self.sound)
+
+	# Getter
+	def name(self, name = None):
+		if name: self._name = name
+		return self._name
+
+	# Specially named function that prints this line when
+	# print(objectInstance) is called
+	__str__(self):
+		return f'This object's name is {self.name()}'
+
+# an instance of Duck, also called an object
+donald = Duck(type='Cartoon', name='Donald', sound='quack')
+
+
+```
+Class inheritance can be done by passing a class as an argument to another class like:
+
+```python
+class MySuperClass:
+	def __init__(self, **kwargs)"
+		if 'type' in kwargs: self._type = kwargs['type']
+		if 'name' in kwargs: self._name = kwargs['name']
+	
+	def type(self, type = None):
+		if type: self._type = type
+		try: return self._type
+		except AttributeError: return None
+
+	def name(self, name = None):
+		if name: self._name = name
+		try: return self._name
+		except AttributeError: return None
+
+class MySubClass(MySuperClass):
+	def __init__(self, **kwargs):
+		self._type = 'SubClass'
+		# If type was passed in, delete it because
+		# the type is hard coded in this subclass
+		if 'type' in kwargs: del kwargs['type']
+		# Call the parent class with the remaining args
+		super().__init__(**kwargs)
+
+```
+### Iterators
+An iterator is a class that provides a sequence of items generally used in a loop.
+Iterators are functionally the same as generators, which are a bit eaier to implement.
