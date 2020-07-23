@@ -54,4 +54,10 @@ press `esc` to exit insert mode
 * `zt` - Put current line at top
 * `zb` - Put current line at bottom
 
+### Surround Text
+#### `ciw'Ctrl+r"'`
+- `ciw` deletes the word the cursor is on, and enters insert mode!
+- `'` adds a literal `'` character because you're in insert mode
+- `Ctrl+r"` - Inserts the content of the `"` register (what you just yanked with ciw)
+- `'` - the closing `'` character in insert mode.
 
