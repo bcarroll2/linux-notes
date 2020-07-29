@@ -136,3 +136,86 @@ class MySubClass(MySuperClass):
 ### Iterators
 An iterator is a class that provides a sequence of items generally used in a loop.
 Iterators are functionally the same as generators, which are a bit eaier to implement.
+
+
+### Exceptions
+Error reporting mechanisms.
+
+Wrap blocks of code in try/except statements, which let you capture the exception and do something with the code.
+
+```python
+# We'll import sys so we can read more about the errors
+import sys
+
+def main():
+	try:
+		x = int('foo')
+	except ValueError:
+		print('I caught a value error')
+	except ZeroDivisionError:
+		print('Dont divide by zero')
+	except:
+		# This is the default exception if you
+		# dont know the type
+		print(f'Some unknown error: {sys.exc_info()')
+	else:
+		# The else is only executed if
+		# there is no error in the previous except blocks
+```
+
+- Actual error message is the last line of the console
+- Everything else is called the Traceback - it goes bottom to top, based on where the error occurs and what called the function that causes the error.
+
+#### Raising Exceptions
+Raising Exceptions reports runtime error. You can generate your own exceptions for error reporting in your code, and this is considered best-practice.
+
+- Generate an exception using the `raise` statement
+
+```python
+def someFunction(*args):
+	numargs = len(args)
+	if numargs < 1:
+		raise TypeError(f'expected at least 1 argument, got {numargs}')
+	if numargs > 5:
+		raise TypeError(f'too many arguments, max 5 got {numargs}`)
+
+def main():
+	try:
+		someFunction(1,2,3,4,5,6)
+	except TypeError as e:
+		print(f'argument error: {e}')
+```
+
+#### Types of Errors:
+- ValueError
+- ZeroDivisionError
+
+### Strings
+Strings are immutable objects. Methods return a different object than the string input. Basically, a new object with a new ID (id(str1) vs id(str2))
+Common Methods:
+- "string".upper()
+- "string".lower()
+- "string".title()
+
+-"this is a string".split() # => ["this", "is", "a", "string"]
+-":".join(list) # => "this:is:a:string"
+
+
+You can concatenate strings with + ('hello' + ' world')
+
+### File I/O
+The `open` method returns a file object. The object itself is an iterator, so you can loop over the file and not have to buffer it in memory.
+
+`rstrip` is a string method that strips any whitespace including newlines from end of line.
+
+```python
+# open can be open(file, 'r') or open(file, 'w') or open(file, 'a')
+# w is write mode empties the file if file is not empty, and starts at beginning. If it doesnt exist, it creates the file.
+# a is append mode which adds content to end of file. Does not empty or create a file.
+
+f = open('lines.txt')
+
+for line in f:
+	print(line.rstrip()) #
+```
+
